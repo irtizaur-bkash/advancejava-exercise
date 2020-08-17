@@ -31,33 +31,34 @@ import java.util.StringJoiner;
  */
 public class Users {
 
-	/**
-	 * TODO 1: activate all users - change the status of all the users
-	 * <p>
-	 * Example-
-	 * given a list of users - User ("user1"), Users("User2")
-	 * by default status of users is Status.CREATED
-	 *
-	 * @param users  list of users
-	 * @param status a new status
-	 * @see User#setStatus(Status)
-	 */
-	public static void activatedAll(List<User> users, Status status) {
-		throw new RuntimeException("NotImplemented");
-	}
+    /**
+     * TODO 1: activate all users - change the status of all the users
+     * <p>
+     * Example-
+     * given a list of users - User ("user1"), Users("User2")
+     * by default status of users is Status.CREATED
+     *
+     * @param users  list of users
+     * @param status a new status
+     * @see User#setStatus(Status)
+     */
+    public static void activatedAll(List<User> users, Status status) {
+        users.forEach(user -> user.setStatus(status));
+    }
 
-	/**
-	 * TODO 2: Create a string representation of all users
-	 * use toString method of users to get String representation of user
-	 *
-	 * @param users list of string
-	 * @see User#toString()
-	 * @see StringJoiner#add(CharSequence)
-	 * @see StringJoiner#toString()
-	 */
+    /**
+     * TODO 2: Create a string representation of all users
+     * use toString method of users to get String representation of user
+     *
+     * @param users list of string
+     * @see User#toString()
+     * @see StringJoiner#add(CharSequence)
+     * @see StringJoiner#toString()
+     */
 
-	public static String makeStringOfAllUsernames(List<User> users) {
-
-		throw new RuntimeException("NotImplemented");
-	}
+    public static String makeStringOfAllUsernames(List<User> users) {
+        StringJoiner joiner = new StringJoiner(",");
+        users.forEach(user -> joiner.add(user.toString()));
+        return joiner.toString();
+    }
 }

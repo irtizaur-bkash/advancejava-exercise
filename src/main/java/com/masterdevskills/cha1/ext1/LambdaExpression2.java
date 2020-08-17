@@ -28,20 +28,34 @@ package com.masterdevskills.cha1.ext1;
  */
 public class LambdaExpression2 {
 
-	/**
-	 * TODO Create a functional interface called Executable
-	 * Add a method called execute()
-	 * it doesn't take anything and returns void
-	 * use this functional interface as argument of the following method and log
-	 * the time it takes to execute the method
-	 */
-	public void executionTime() {
-		//TODO add your code here;
-	}
+    /**
+     * TODO Create a functional interface called Executable
+     * Add a method called execute()
+     * it doesn't take anything and returns void
+     * use this functional interface as argument of the following method and log
+     * the time it takes to execute the method
+     */
+    public void executionTime(Executable executable) {
+        //TODO add your code here;
+        long l = System.nanoTime();
+        executable.execute();
+        System.out.println("time: " + (System.nanoTime() - l));
+    }
 
-	/* TODO: use the above of method here
-	 */
-	public void run() {
-		//executionTime();
-	}
+    /* TODO: use the above of method here
+     */
+    public void run() {
+        executionTime(() -> {
+            long sum = 0;
+            for (int i = 0; i < 1000; i++) {
+                sum += Math.random();
+            }
+            System.out.println("sum of 1000 random number: " + sum);
+        });
+    }
+
+    interface Executable {
+        void execute();
+    }
 }
+

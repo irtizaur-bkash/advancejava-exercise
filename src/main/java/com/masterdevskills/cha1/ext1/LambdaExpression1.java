@@ -25,36 +25,41 @@
 package com.masterdevskills.cha1.ext1;
 
 
+import com.fasterxml.jackson.core.JsonParseException;
+
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class LambdaExpression1 {
 
-	/**
-	 * TODO 1:  Write a lambda expression using Predicate<String> to check if a string has more then 5 characters or not
-	 *
-	 * @param value given value
-	 * @see Predicate<String>
-	 */
-	public static boolean checkMoreThan5Chars(String value) {
+    /**
+     * TODO 1:  Write a lambda expression using Predicate<String> to check if a string has more then 5 characters or not
+     *
+     * @param value given value
+     * @see Predicate<String>
+     */
+    public static boolean checkMoreThan5Chars(String value) {
+        Predicate<String> predicate = (text) -> text.length() > 5;
+        return predicate.test(value);
+    }
 
-		throw new RuntimeException("NotImplementedYet");
-	}
+    /* TODO 2: Write a lambda expression using Predicate<String> to check if string is empty or not
+     * @param value given value
+     * @see Predicate<String>
+     */
+    public static boolean isStringEmpty(String value) {
+        Predicate<String> predicate = (string) -> string.isBlank();
+        return predicate.test(value);
+    }
 
-	/* TODO 2: Write a lambda expression using Predicate<String> to check if string is empty or not
-	 * @param value given value
-	 * @see Predicate<String>
-	 */
-	public static boolean isStringEmpty(String value) {
-		throw new RuntimeException("NotImplementedYet");
-	}
-
-	/**
-	 * TODO 3:  Write lambda expression using Function<String, String> to converter a text to uppercase
-	 *
-	 * @param text given value
-	 * @see Predicate<String>
-	 */
-	public static String convertToUpperCase(String text) {
-		throw new RuntimeException("NotImplementedYet");
-	}
+    /**
+     * TODO 3:  Write lambda expression using Function<String, String> to converter a text to uppercase
+     *
+     * @param text given value
+     * @see Predicate<String>
+     */
+    public static String convertToUpperCase(String text) {
+        Function<String, String> convert = (value) -> value.toUpperCase();
+        return convert.apply(text);
+    }
 }

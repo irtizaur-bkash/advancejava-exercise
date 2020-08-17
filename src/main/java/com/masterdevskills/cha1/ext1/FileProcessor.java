@@ -22,6 +22,10 @@
 
 package com.masterdevskills.cha1.ext1;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -45,8 +49,14 @@ public class FileProcessor {
      * @see List#removeIf(Predicate)
      */
     public List<String> readFileFrom(String fileName) {
-
-        throw new RuntimeException("Not Yet Implemented");
+        try {
+            List <String> lines = Files.readAllLines(Path.of(fileName));
+            lines.removeIf(s -> s.isBlank());
+            return lines;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return Collections.emptyList();
     }
 
     /**
@@ -59,8 +69,12 @@ public class FileProcessor {
      * @see String#join(CharSequence, CharSequence...)
      */
     public void writeToFile(List<String> lines, String fileName) {
-
-        throw new RuntimeException("Not Yet Implemented");
+        String join = String.join("\n", lines);
+        try {
+            Files.writeString(Path.of(fileName), join);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
 
