@@ -31,6 +31,27 @@ public class Logger implements Log {
         }
     }
 
+    @Override
+    public void trace(final String message, final Object... params) {
+        if (isLoggable()) {
+            System.out.println(formatMessage(message, params));
+        }
+    }
+
+    @Override
+    public void debug(final String message, final Object... params) {
+        if (isLoggable()) {
+            System.out.println(formatMessage(message, params));
+        }
+    }
+
+    @Override
+    public void warn(final String message, final Object... params) {
+        if (isLoggable()) {
+            System.out.println(formatMessage(message, params));
+        }
+    }
+
     private String formatMessage(final String message, final Object[] params) {
         if (message != null && params != null) {
             StringBuilder sbMessage = new StringBuilder(message);
@@ -50,6 +71,27 @@ public class Logger implements Log {
 
     @Override
     public void info(final String message, final Supplier<Object[]> params) {
+        if (isLoggable()) {
+            System.out.println(formatMessage(message, params.get()));
+        }
+    }
+
+    @Override
+    public void trace(final String message, final Supplier<Object[]> params) {
+        if (isLoggable()) {
+            System.out.println(formatMessage(message, params.get()));
+        }
+    }
+
+    @Override
+    public void debug(final String message, final Supplier<Object[]> params) {
+        if (isLoggable()) {
+            System.out.println(formatMessage(message, params.get()));
+        }
+    }
+
+    @Override
+    public void warn(final String message, final Supplier<Object[]> params) {
         if (isLoggable()) {
             System.out.println(formatMessage(message, params.get()));
         }
